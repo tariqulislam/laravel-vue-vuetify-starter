@@ -18,7 +18,6 @@
         <v-app id="app">
             <example></example>
         </v-app>
-      
     <script src="{{asset('/js/app.js')}}"></script>
     </body>
 </html>

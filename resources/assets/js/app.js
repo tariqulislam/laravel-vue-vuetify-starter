@@ -1,6 +1,5 @@
 require('./bootstrap');
 
-Vue.use(Vuetify);
 
 Vue.component('example', require('./components/Example.vue'));
 
