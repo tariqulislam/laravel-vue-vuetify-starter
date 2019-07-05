@@ -90,7 +90,7 @@
                         ref="inputOwnerImage"
                         accept="image/*"
                         @change="onPickOwnerImageInput"
-                        />
+                      />
                     </v-flex>
                   </v-layout>
                 </v-container>
@@ -120,14 +120,21 @@
                       ></v-text-field>
                     </v-flex>
                     <v-flex xs6>
-                      <v-text-field box v-model="idFileImage" @click="onIdPickImage" placeholder="Select Image" filled label="Select Image "></v-text-field>
-                      <input 
+                      <v-text-field
+                        box
+                        v-model="idFileImage"
+                        @click="onIdPickImage"
+                        placeholder="Select Image"
+                        filled
+                        label="Select Image "
+                      ></v-text-field>
+                      <input
                         type="file"
                         style="display:none"
                         ref="idImage"
                         accept="image/*"
                         @change="onIdPickFile"
-                        />
+                      />
                     </v-flex>
                   </v-layout>
                 </v-container>
@@ -177,16 +184,93 @@
                 <v-container grid-list-md>
                   <v-layout row warp>
                     <v-flex xs12>
-                      <v-radio-group class="text-md-center" row v-model="paymentTypes">
+                      <v-radio-group @change="onPaymentTypeChange" class="text-md-center" row v-model="paymentTypes">
                         <v-radio label="MOBILE" value="mobile"></v-radio>
                         <v-radio label="BNAK" value="bank"></v-radio>
                       </v-radio-group>
                     </v-flex>
-                    <v-flex row warp>
-
+                  </v-layout>
+                </v-container>
+                <v-container v-if="paymentTypes === 'mobile'" grid-list-md>
+                  <v-layout row wrap>
+                    <v-flex xs6>
+                      <v-text-field
+                        box
+                        placeholder="Wallet Provider"
+                        filled
+                        label="Select an Wallet Provider"
+                      ></v-text-field>
                     </v-flex>
-                    <v-flex row warp>
+                    <v-flex xs6>
+                      <v-text-field box placeholder="Enter Mobile Account Name" filled label="Mobile Account Name"></v-text-field>
+                    </v-flex>
+                    <v-flex xs6>
+                      <v-text-field
+                        box
+                        placeholder="Enter Mobile Account Number"
+                        filled
+                        label="Mobile Account Number"
+                      ></v-text-field>
+                    </v-flex>
+                  </v-layout>
+                </v-container>
+                <v-container v-if="paymentTypes === 'bank'" grid-list-md>
+                  <v-layout row wrap>
+                    <v-flex xs6>
+                      <v-text-field
+                        box
+                        placeholder="Enter Wallet Provider"
+                        filled
+                        label="Wallet Provider"
+                      ></v-text-field>
+                    </v-flex>
+                    <v-flex xs6>
+                      <v-text-field box placeholder="Provider Account Name" filled label="Ba Link"></v-text-field>
+                    </v-flex>
+                    <v-flex xs6>
+                      <v-text-field
+                        box
+                        placeholder="Business Name"
+                        filled
+                        label="Name of your Business"
+                      ></v-text-field>
+                    </v-flex>
+                    <v-flex xs6>
+                      <v-text-field
+                        box
+                        placeholder="Business Name"
+                        filled
+                        label="Name of your Business"
+                      ></v-text-field>
+                    </v-flex>
+                    <v-flex xs6>
+                      <v-text-field box placeholder="Enter Media Link" filled label="Media Link"></v-text-field>
+                    </v-flex>
+                    <v-flex xs6>
+                      <v-text-field
+                        box
+                        placeholder="Business Name"
+                        filled
+                        label="Name of your Business"
+                      ></v-text-field>
+                    </v-flex>
+                  </v-layout>
+                </v-container>
 
+                <v-container grid-list-md>
+                  <v-layout row warp>
+                    <v-flex xs12>
+                      <v-checkbox
+                        label="I accept terms and conditions"
+                        color="indigo"
+                        value="accept"
+                      />
+                    </v-flex>
+                  </v-layout>
+                  <v-layout row wrap>
+                    <v-flex xs12>
+                      <v-btn class="success">Save</v-btn>
+                      <v-btn class="warning">Cancel</v-btn>
                     </v-flex>
                   </v-layout>
                 </v-container>
@@ -212,61 +296,67 @@ export default {
       idValue: "",
       idInputTitle: "",
       paymentTypes: "mobile",
-      idFileImage: '',
-      idFileContent: '',
-      ownerImage: '',
-      owernImageContent: ''
+      idFileImage: "",
+      idFileContent: "",
+      ownerImage: "",
+      owernImageContent: ""
     };
   },
   methods: {
-      onIdTypeChange (event) {
+    onIdTypeChange(event) {},
+    onPickOwnerImage() {
+      this.$refs.inputOwnerImage.click();
+    },
+    onPaymentTypeChange(event) {
+        let val = event.target.value;
+        if(val === 'mobile') {
+            this.paymentTypes = 'mobile'
+        } else {
+            this.paymentTypes = 'bank'
+        }
+    },
+    onPickOwnerImageInput(e) {
+      const files = e.target.files;
+      if (files[0] !== undefined) {
+        this.ownerImage = files[0].name;
+        if (this.ownerImage.lastIndexOf(".") <= 1) {
+          return;
+        }
 
-      },
-      onPickOwnerImage () {
-          this.$refs.inputOwnerImage.click();
-      },
-      onPickOwnerImageInput (e) {
-          const files = e.target.files
-          if(files[0] !== undefined) {
-              this.ownerImage = files[0].name
-              if(this.ownerImage.lastIndexOf('.') <=1) {
-                  return
-              }
-
-              const fr = new FileReader ()
-              fr.readAsDataURL(files[0])
-              fr.addEventListener(`load`, () => {
-                //  this.imageUrl = fr.result;
-                  this.owernImageContent = files[0];
-              })
-          } else {
-              this.ownerImage = ''
-              this.owernImageContent = ''
-          }
-      },
-      onIdPickImage () {
-          this.$refs.idImage.click();
-      },
-      onIdPickFile(e) {
-          debugger
-          const files = e.target.files
-          if(files[0] !== undefined) {
-              this.idFileImage = files[0].name
-              if(this.idFileImage.lastIndexOf('.') <=1) {
-                  return
-              }
-
-              const fr = new FileReader ()
-              fr.readAsDataURL(files[0])
-              fr.addEventListener(`load`, () => {
-                //  this.imageUrl = fr.result;
-                  this.idFileContent = files[0];
-              })
-          } else {
-              this.idFileImage = ''
-              this.idFileContent = ''
-          }
+        const fr = new FileReader();
+        fr.readAsDataURL(files[0]);
+        fr.addEventListener(`load`, () => {
+          //  this.imageUrl = fr.result;
+          this.owernImageContent = files[0];
+        });
+      } else {
+        this.ownerImage = "";
+        this.owernImageContent = "";
       }
+    },
+    onIdPickImage() {
+      this.$refs.idImage.click();
+    },
+    onIdPickFile(e) {
+      debugger;
+      const files = e.target.files;
+      if (files[0] !== undefined) {
+        this.idFileImage = files[0].name;
+        if (this.idFileImage.lastIndexOf(".") <= 1) {
+          return;
+        }
+
+        const fr = new FileReader();
+        fr.readAsDataURL(files[0]);
+        fr.addEventListener(`load`, () => {
+          //  this.imageUrl = fr.result;
+          this.idFileContent = files[0];
+        });
+      } else {
+        this.idFileImage = "";
+        this.idFileContent = "";
+      }
+    }
   }
 };
 </script>
