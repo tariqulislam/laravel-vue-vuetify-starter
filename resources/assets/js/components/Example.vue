@@ -196,20 +196,20 @@
                     <v-flex xs6>
                       <v-text-field
                         box
-                        placeholder="Wallet Provider"
+                        placeholder="Business Name"
                         filled
-                        label="Select an Wallet Provider"
+                        label="Name of your Business"
                       ></v-text-field>
                     </v-flex>
                     <v-flex xs6>
-                      <v-text-field box placeholder="Enter Mobile Account Name" filled label="Mobile Account Name"></v-text-field>
+                      <v-text-field box placeholder="Enter Media Link" filled label="Media Link"></v-text-field>
                     </v-flex>
                     <v-flex xs6>
                       <v-text-field
                         box
-                        placeholder="Enter Mobile Account Number"
+                        placeholder="Business Name"
                         filled
-                        label="Mobile Account Number"
+                        label="Name of your Business"
                       ></v-text-field>
                     </v-flex>
                   </v-layout>
@@ -219,13 +219,13 @@
                     <v-flex xs6>
                       <v-text-field
                         box
-                        placeholder="Enter Wallet Provider"
+                        placeholder="Business Name"
                         filled
-                        label="Wallet Provider"
+                        label="Name of your Business"
                       ></v-text-field>
                     </v-flex>
                     <v-flex xs6>
-                      <v-text-field box placeholder="Provider Account Name" filled label="Ba Link"></v-text-field>
+                      <v-text-field box placeholder="Enter Media Link" filled label="Media Link"></v-text-field>
                     </v-flex>
                     <v-flex xs6>
                       <v-text-field
@@ -308,12 +308,7 @@ export default {
       this.$refs.inputOwnerImage.click();
     },
     onPaymentTypeChange(event) {
-        let val = event.target.value;
-        if(val === 'mobile') {
-            this.paymentTypes = 'mobile'
-        } else {
-            this.paymentTypes = 'bank'
-        }
+
     },
     onPickOwnerImageInput(e) {
       const files = e.target.files;
