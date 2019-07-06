@@ -10,6 +10,4 @@
 |
 */
 
-Route::get('/', function () {
-    return view('app');
-});
+Route::get('/{any}', 'Site\SiteController@index')->where('any', '.*');

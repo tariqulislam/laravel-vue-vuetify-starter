@@ -3,6 +3,8 @@
 import _ from 'lodash'
 import Vue from 'vue'
 import vueResource from 'vue-resource'
+import Routes from './routes.js';
+import Main from './Main.vue';
 
 import Vuetify from 'vuetify'
 Vue.use(Vuetify);
@@ -14,8 +16,12 @@ Vue.http.interceptors.push((request, next) => {
     next();
 });
 
-Vue.component('example', require('./components/Example.vue'));
+
 
 const app = new Vue({
-    el: '#app'
+    el: '#app',
+    router: Routes,
+    render:h => h(Main)
 });
+
+export default app;
