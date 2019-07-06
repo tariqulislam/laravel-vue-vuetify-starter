@@ -16,8 +16,6 @@ Vue.http.interceptors.push((request, next) => {
     next();
 });
 
-
-
 const app = new Vue({
     el: '#app',
     router: Routes,
