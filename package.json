@@ -16,6 +16,7 @@
     "vue-resource": "^1.0.3"
   },
   "dependencies": {
+    "es6-promise": "^4.2.8",
     "material-design-icons-iconfont": "^5.0.1",
     "vue-router": "^3.0.7",
     "vuetify": "^1.5.16",

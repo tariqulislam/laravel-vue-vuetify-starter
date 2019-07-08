@@ -1,9 +1,8 @@
 <template>
   <v-app>
-    <v-navigation-drawer app></v-navigation-drawer>
     <v-toolbar app>
-      <v-toolbar-side-icon></v-toolbar-side-icon>
-      <v-toolbar-title>Title</v-toolbar-title>
+     
+      <v-toolbar-title>Theo Percel</v-toolbar-title>
       <v-spacer></v-spacer>
       <v-toolbar-items>
         <v-btn to="/" flat>Home</v-btn>
@@ -11,7 +10,7 @@
       </v-toolbar-items>
     </v-toolbar>
     <v-content>
-      <v-container fluid>
+      <v-container>
         <router-view></router-view>
       </v-container>
     </v-content>

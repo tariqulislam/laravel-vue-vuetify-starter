@@ -5,6 +5,7 @@ import Vue from 'vue'
 import vueResource from 'vue-resource'
 import Routes from './routes.js';
 import Main from './Main.vue';
+import store from './store.js';
 
 import Vuetify from 'vuetify'
 Vue.use(Vuetify);
@@ -19,6 +20,7 @@ Vue.http.interceptors.push((request, next) => {
 const app = new Vue({
     el: '#app',
     router: Routes,
+    store: store,
     render:h => h(Main)
 });
 
