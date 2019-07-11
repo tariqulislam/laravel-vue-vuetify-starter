@@ -1,3 +1,12 @@
-export const setMerchantInDetails = ({commit}, merchant) => {
-    commit('SET_MERCHANT_IN_DETAILS', merchant)
+import WebClient from '../../../webclient.js'
+
+
+export const  fetchPaymentProviders = ({commit})  => {
+        WebClient().get('/payment/providers')
+            .then(response => {
+                debugger
+            })
+            .catch(error => {
+                debugger
+            })
 }

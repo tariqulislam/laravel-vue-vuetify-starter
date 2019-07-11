@@ -292,6 +292,9 @@ export default {
   mounted() {
     console.log("Component mounted.");
   },
+  created () {
+      this.$store.dispatch('fetchPaymentProviders');
+  },
   data() {
     return {
       message: "Changing the Example Code",

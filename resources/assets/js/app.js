@@ -12,10 +12,6 @@ Vue.use(Vuetify);
 
 Vue.use(vueResource);
 
-Vue.http.interceptors.push((request, next) => {
-    request.headers.set('X-CSRF-TOKEN', Laravel.csrfToken);
-    next();
-});
 
 const app = new Vue({
     el: '#app',
