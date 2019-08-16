@@ -16,3 +16,8 @@ Route::get('/account/types', 'Admin\MerchantController@loadAccountTypes');
 Route::get('/identification/types', 'Admin\MerchantController@loadIdentificationTypes');
 Route::get('/payment/types', 'Admin\MerchantController@loadPaymentTypes');
 Route::get('/payment/providers' , 'Admin\MerchantController@loadPaymentProviders');
+Route::post('/merchants/register', 'Site\SiteController@register');
+Route::post('/merchants/login', 'Site\SiteController@login');
+Route::post('/admins/login', 'Admin\AdminController@login');
+Route::post('/admins/register', 'Admin\AdminController@register');
+Route::get('/merchants/list', 'Admin\MerchantController@lstMerchants');

@@ -7,7 +7,8 @@ export const initialState = {
         address: ''
     },
     lstMerchants: [],
-    lstPaymentProviders: []
+    lstPaymentProviders: [],
+    lstAccountTypes: [],
 }
 
 export default {

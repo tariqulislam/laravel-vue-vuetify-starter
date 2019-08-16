@@ -14,3 +14,7 @@ export const SET_MERCHANT_IN_DETAILS = (state, payload) => {
 export const LOAD_PAYMENT_PROVIDERS = (state, payload) => {
     state.lstPaymentProviders = payload;
 }
+
+export const LOAD_ACCOUNT_TYPES = (state, payload) => {
+    state.lstAccountTypes = payload 
+}

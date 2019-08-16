@@ -18,7 +18,9 @@ class CreateOperatosTables extends Migration
             $table->integer('merchant_id');
             $table->string('operator_name',255);
             $table->string('operator_email', 255);
+            $table->string('operator_number', 255);
             $table->string('operator_password', 255);
+            $table->string('api_token', 255)->nullable();
             $table->timestamps();
         });
     }

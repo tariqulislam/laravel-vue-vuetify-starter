@@ -16,15 +16,15 @@ class CreatePaymentDetailsTable extends Migration
         Schema::create('payment_details', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('merchant_id');
-            $table->string('payment_type_id');
-            $table->integer('account_type_id');
+            $table->string('payment_type');
+            $table->integer('account_type_id')->nullable();
             $table->integer('payment_provider_id');
-            $table->string('mobile_account_number');
-            $table->string('mobile_account_name');
-            $table->string('bank_holder_name', 255);
-            $table->string('bank_wallet_number', 255);
-            $table->string('bank_branch_name', 255);
-            $table->string('bank_routing_number');
+            $table->string('mobile_account_number', 255)->nullable();
+            $table->string('mobile_account_name', 255)->nullable();
+            $table->string('bank_holder_name', 255)->nullable();
+            $table->string('bank_wallet_number', 255)->nullable();
+            $table->string('bank_branch_name', 255)->nullable();
+            $table->string('bank_routing_number')->nullable();
             $table->timestamps();
         });
     }

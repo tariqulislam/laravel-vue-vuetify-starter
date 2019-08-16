@@ -9,7 +9,10 @@
         <!-- Fonts -->
         <link rel="stylesheet" type="text/css" href="/css/vuetify/vuetify.min.css" />
         <link rel="stylesheet" type="text/css" href="/css/material-icons/material-design-icons.css" type="text/css" />
-
+        <link rel="stylesheet" type="text/css" href="/css/app.css" />
+        <script type="text/javascript">
+            window.Laravel = document.head.querySelector('meta[name="csrf-token"]');
+        </script>
     </head>
     <body>
         <div id="app">
